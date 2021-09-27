@@ -3,6 +3,7 @@ Library    SeleniumLibrary
 Resource    PageObject/LandingPage.robot
 Resource    PageObject/top-nav.robot
 Resource    PageObject/search_selectpage.robot
+Resource    PageObject/cartpage.robot
 
 *** Variables ***
 
@@ -18,12 +19,11 @@ Select the product
     choose the product
     wait for specific text
 Add the product to cart
-    Execute Javascript    window.scrollTo(0, window.scrollY+100)
-    wait until element is visible    //div[@class='ProductShowcase__actions__2J-2e'][1]/div[2]/button
-    click button    //div[@class='ProductShowcase__actions__2J-2e'][1]/div[2]/button
-    wait until page contains    Added to Cart
-    Execute Javascript    window.scrollTo(top)
-    sleep    7s
+    page scroll to the element
+    wait for element to be visible
+    hit the add cart button
+    verify for added to cart text
+    scroll to the top and wait
 proceed to checkout
     click link    //*[@id='nav-cart']
     wait until element is visible    //*[@name='proceedToRetailCheckout']
